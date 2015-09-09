@@ -17,6 +17,10 @@
 		84ABF8D91B9EE24B003448DF /* NSString+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8CE1B9EE24B003448DF /* NSString+Expand.m */; };
 		84ABF8DB1B9EE24B003448DF /* OwnLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8D21B9EE24B003448DF /* OwnLabel.m */; };
 		84ABF8DD1B9EE24B003448DF /* UILabel+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8D61B9EE24B003448DF /* UILabel+Expand.m */; };
+		84B170DA1BA00765006B6B48 /* scanner_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B170D81BA00765006B6B48 /* scanner_bg@2x.png */; };
+		84B170DB1BA00765006B6B48 /* scanner_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B170D91BA00765006B6B48 /* scanner_line@2x.png */; };
+		84B170DE1BA00AC2006B6B48 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B170DD1BA00AC2006B6B48 /* ScannerViewController.m */; };
+		84B170E11BA03367006B6B48 /* ScannerAutoFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B170E01BA03367006B6B48 /* ScannerAutoFocusViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,12 @@
 		84ABF8D21B9EE24B003448DF /* OwnLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnLabel.m; sourceTree = "<group>"; };
 		84ABF8D51B9EE24B003448DF /* UILabel+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Expand.h"; sourceTree = "<group>"; };
 		84ABF8D61B9EE24B003448DF /* UILabel+Expand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Expand.m"; sourceTree = "<group>"; };
+		84B170D81BA00765006B6B48 /* scanner_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanner_bg@2x.png"; sourceTree = "<group>"; };
+		84B170D91BA00765006B6B48 /* scanner_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanner_line@2x.png"; sourceTree = "<group>"; };
+		84B170DC1BA00AC2006B6B48 /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
+		84B170DD1BA00AC2006B6B48 /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
+		84B170DF1BA03367006B6B48 /* ScannerAutoFocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerAutoFocusViewController.h; sourceTree = "<group>"; };
+		84B170E01BA03367006B6B48 /* ScannerAutoFocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerAutoFocusViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +101,7 @@
 		84ABF89E1B9EE1A0003448DF /* QRCodeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				84B170D61BA00765006B6B48 /* Resource */,
 				84ABF8C51B9EE24B003448DF /* Classes */,
 				84ABF8A31B9EE1A0003448DF /* AppDelegate.h */,
 				84ABF8A41B9EE1A0003448DF /* AppDelegate.m */,
@@ -151,6 +162,10 @@
 			children = (
 				84ABF8CA1B9EE24B003448DF /* MainViewController.h */,
 				84ABF8CB1B9EE24B003448DF /* MainViewController.m */,
+				84B170DC1BA00AC2006B6B48 /* ScannerViewController.h */,
+				84B170DD1BA00AC2006B6B48 /* ScannerViewController.m */,
+				84B170DF1BA03367006B6B48 /* ScannerAutoFocusViewController.h */,
+				84B170E01BA03367006B6B48 /* ScannerAutoFocusViewController.m */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -166,6 +181,23 @@
 				84ABF8D61B9EE24B003448DF /* UILabel+Expand.m */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		84B170D61BA00765006B6B48 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				84B170D71BA00765006B6B48 /* Image */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		84B170D71BA00765006B6B48 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				84B170D81BA00765006B6B48 /* scanner_bg@2x.png */,
+				84B170D91BA00765006B6B48 /* scanner_line@2x.png */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +280,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B170DA1BA00765006B6B48 /* scanner_bg@2x.png in Resources */,
+				84B170DB1BA00765006B6B48 /* scanner_line@2x.png in Resources */,
 				84ABF8B01B9EE1A0003448DF /* LaunchScreen.xib in Resources */,
 				84ABF8AD1B9EE1A0003448DF /* Images.xcassets in Resources */,
 			);
@@ -274,6 +308,8 @@
 				84ABF8D71B9EE24B003448DF /* LocalFileManager.m in Sources */,
 				84ABF8D91B9EE24B003448DF /* NSString+Expand.m in Sources */,
 				84ABF8DD1B9EE24B003448DF /* UILabel+Expand.m in Sources */,
+				84B170E11BA03367006B6B48 /* ScannerAutoFocusViewController.m in Sources */,
+				84B170DE1BA00AC2006B6B48 /* ScannerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QRCodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -402,6 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QRCodeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
