@@ -8,28 +8,15 @@
 
 #import "ScannerViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ScannerView.h"
 
 @interface ScannerViewController () <AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate>
-{
-    //时间
-    NSTimer *scannerTimer;
-    //速度
-    CGFloat scannerSpeed;
-    //起始位置
-    CGRect scannerStartFrame;
-    //结束位置
-    CGRect scannerEndFrame;
-}
 
 //取消按钮
 @property (strong, nonatomic) UIButton *button_cancel;
 @property (strong, nonatomic) UIBarButtonItem *cancelButtonItem;
-//提示
-@property (strong, nonatomic) UILabel *tipLabel;
 //扫描区域
-@property (strong, nonatomic) UIImageView *scannerBg;
-//扫描线
-@property (strong, nonatomic) UIImageView *scannerLine;
+@property (strong, nonatomic) ScannerView *scannerView;
 
 //管理输入输出流
 @property (strong, nonatomic) AVCaptureSession *captureSession;
@@ -44,7 +31,7 @@
     [super viewDidLoad];
     
     [self setTitle:@"二维码扫描"];
-    [self layoutViews];
+    [self.navigationItem setLeftBarButtonItem:self.cancelButtonItem];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,87 +42,29 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self updateScannerView];
+    [self startScanner];
 }
 
 #pragma mark - Main
 
-- (void)layoutViews {
-    [self.view setBackgroundColor:[UIColor grayColor]];
-    [self.navigationItem setLeftBarButtonItem:self.cancelButtonItem];
-    
-    [self.view addSubview:self.tipLabel];
-    
-    CGFloat scannerBg_x = (CGRectGetWidth(self.view.bounds)-280.0f)/2;
-    CGFloat scannerBg_y = 180.0f;
-    [self.scannerBg setFrame:CGRectMake(scannerBg_x, scannerBg_y, 280.0f, 280.0f)];
-    [self.view addSubview:self.scannerBg];
-    
-    scannerStartFrame = CGRectMake(scannerBg_x+30.0f, scannerBg_y + 10.0f, 220.0f, 5.0f);
-    scannerEndFrame = scannerStartFrame;
-    scannerSpeed = 3.0f;
-    [self.scannerLine setFrame:scannerStartFrame];
-    [self.view addSubview:self.scannerLine];
-    [self hideScannerLine];
-
-    scannerTimer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(scannerLineAnimation) userInfo:nil repeats:YES];
-}
-
-//扫描线动画
-- (void)scannerLineAnimation {
-    scannerEndFrame.origin.y += scannerSpeed;
-    if (scannerEndFrame.origin.y > (scannerStartFrame.origin.y + 260.0f)) {
-        scannerEndFrame = scannerStartFrame;
-    }
-    [self.scannerLine setFrame:scannerEndFrame];
-}
-
-//显示扫描线
-- (void)showScannerLine {
-    _scannerLine.hidden = NO;
-    [scannerTimer fire];
-}
-
-//隐藏扫描线
-- (void)hideScannerLine {
-    if ([scannerTimer isValid]) {
-        [scannerTimer invalidate];
-    }
-    _scannerLine.hidden = YES;
-}
-
-//更新视图
-- (void)updateScannerView {
-    [self startScanner];
-    [self showScannerLine];
-}
-
-//是否授权
-- (BOOL)isCaptureDeviceAuthorized {
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if (authStatus != AVAuthorizationStatusAuthorized) {
-        return NO;
-    }
-    return YES;
-}
-
 //开始扫描
 - (void)startScanner {
-    //self.codeObjects = nil;
     [self.captureSession startRunning];
+    //扫描线开始移动
+    [self.scannerView startScanner];
 }
 
 //停止扫描
 - (void)stopScanner {
     [self.captureSession stopRunning];
     self.captureSession = nil;
+    //扫描线停止移动
+    [self.scannerView stopScanner];
 }
-
 
 //扫描报告
 - (void)scannerReport:(NSString *)_result {
     [self stopScanner];
-    [self hideScannerLine];
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"扫描报告" message:_result delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alertView show];
@@ -194,23 +123,43 @@
                 [_captureSession addOutput:metadataOutput];
             }
             
+            //创建输出对象
+            self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
+            [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+            [self.previewLayer setFrame:self.view.bounds];
+            [self.view.layer insertSublayer:self.previewLayer atIndex:0];
+            
+            //创建扫描区域
+            CGFloat clearDrawRect_w = 260.0f;
+            CGFloat clearDrawRect_h = 260.0f;
+            CGFloat clearDrawRect_x = (CGRectGetWidth(self.view.bounds) - clearDrawRect_w)/2;
+            CGFloat clearDrawRect_y = (CGRectGetHeight(self.view.bounds) - clearDrawRect_h)/2;
+            CGRect clearDrawRect = CGRectMake(clearDrawRect_x, clearDrawRect_y, clearDrawRect_w, clearDrawRect_h);
+            
+            self.scannerView = [[ScannerView alloc] init];
+            [self.scannerView setFrame:self.view.bounds];
+            [self.scannerView setBackgroundColor:[UIColor clearColor]];
+            [self.scannerView setClearDrawRect:clearDrawRect];
+            [self.scannerView show];
+            [self.view addSubview:self.scannerView];
+            
             //设置扫描区域
-            CGFloat interest_x = self.scannerBg.frame.origin.y/CGRectGetHeight(self.view.bounds);
-            CGFloat interest_y = self.scannerBg.frame.origin.x/CGRectGetWidth(self.view.bounds);
-            CGFloat interest_w = CGRectGetHeight(self.scannerBg.bounds)/CGRectGetHeight(self.view.bounds);
-            CGFloat interest_h = CGRectGetWidth(self.scannerBg.bounds)/CGRectGetWidth(self.view.bounds);
+            CGFloat interest_x = clearDrawRect_y/CGRectGetHeight(self.view.bounds);
+            CGFloat interest_y = clearDrawRect_x/CGRectGetWidth(self.view.bounds);
+            CGFloat interest_w = clearDrawRect_h/CGRectGetHeight(self.view.bounds);
+            CGFloat interest_h = clearDrawRect_w/CGRectGetWidth(self.view.bounds);
             [metadataOutput setRectOfInterest:CGRectMake(interest_x, interest_y, interest_w, interest_h)];
             
             //设置队列
             [metadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
             //设置元数据类型
             [metadataOutput setMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]];
+            //增加条形码扫描
+            //metadataOutput.metadataObjectTypes = @[AVMetadataObjectTypeEAN13Code,
+            //                                       AVMetadataObjectTypeEAN8Code,
+            //                                       AVMetadataObjectTypeCode128Code,
+            //                                       AVMetadataObjectTypeQRCode];
             
-            //创建输出对象
-            self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
-            [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-            [self.previewLayer setFrame:self.view.bounds];
-            [self.view.layer insertSublayer:self.previewLayer atIndex:0];
         } else {
             NSLog(@"deviceInput error is %@",[error localizedDescription]);
         }
@@ -237,36 +186,6 @@
         _cancelButtonItem.style = UIBarButtonItemStyleDone;
     }
     return _cancelButtonItem;
-}
-
-- (UILabel *)tipLabel {
-    if (_tipLabel == nil) {
-        _tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 100.0f, CGRectGetWidth(self.view.bounds)-40.0f, 60.0f)];
-        _tipLabel.backgroundColor = [UIColor clearColor];
-        _tipLabel.textAlignment = NSTextAlignmentCenter;
-        _tipLabel.numberOfLines = 2;
-        _tipLabel.font = [UIFont systemFontOfSize:18.0f];
-        _tipLabel.textColor = [UIColor whiteColor];
-        _tipLabel.text = @"将二维码放入框内，即可自动扫描";
-        //_tipLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    }
-    return _tipLabel;
-}
-
-- (UIImageView *)scannerBg {
-    if (_scannerBg == nil) {
-        _scannerBg = [[UIImageView alloc] init];
-        _scannerBg.image = [UIImage imageNamed:@"scanner_bg"];
-    }
-    return _scannerBg;
-}
-
-- (UIImageView *)scannerLine {
-    if (_scannerLine == nil) {
-        _scannerLine = [[UIImageView alloc] init];
-        _scannerLine.image = [UIImage imageNamed:@"scanner_line"];
-    }
-    return _scannerLine;
 }
 
 @end

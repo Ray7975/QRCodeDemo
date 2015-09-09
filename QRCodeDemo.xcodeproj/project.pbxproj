@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8486E2C21BA04073009AE1DB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486E2BC1BA04073009AE1DB /* MainViewController.m */; };
+		8486E2C31BA04073009AE1DB /* ScannerAutoFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486E2BE1BA04073009AE1DB /* ScannerAutoFocusViewController.m */; };
+		8486E2C41BA04073009AE1DB /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486E2C01BA04073009AE1DB /* ScannerViewController.m */; };
+		8486E2C71BA0409B009AE1DB /* ScannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486E2C61BA0409B009AE1DB /* ScannerView.m */; };
 		84ABF8A21B9EE1A0003448DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8A11B9EE1A0003448DF /* main.m */; };
 		84ABF8A51B9EE1A0003448DF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8A41B9EE1A0003448DF /* AppDelegate.m */; };
 		84ABF8AD1B9EE1A0003448DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84ABF8AC1B9EE1A0003448DF /* Images.xcassets */; };
 		84ABF8B01B9EE1A0003448DF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ABF8AE1B9EE1A0003448DF /* LaunchScreen.xib */; };
 		84ABF8BC1B9EE1A0003448DF /* QRCodeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8BB1B9EE1A0003448DF /* QRCodeDemoTests.m */; };
 		84ABF8D71B9EE24B003448DF /* LocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8C81B9EE24B003448DF /* LocalFileManager.m */; };
-		84ABF8D81B9EE24B003448DF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8CB1B9EE24B003448DF /* MainViewController.m */; };
 		84ABF8D91B9EE24B003448DF /* NSString+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8CE1B9EE24B003448DF /* NSString+Expand.m */; };
 		84ABF8DB1B9EE24B003448DF /* OwnLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8D21B9EE24B003448DF /* OwnLabel.m */; };
 		84ABF8DD1B9EE24B003448DF /* UILabel+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABF8D61B9EE24B003448DF /* UILabel+Expand.m */; };
 		84B170DA1BA00765006B6B48 /* scanner_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B170D81BA00765006B6B48 /* scanner_bg@2x.png */; };
 		84B170DB1BA00765006B6B48 /* scanner_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B170D91BA00765006B6B48 /* scanner_line@2x.png */; };
-		84B170DE1BA00AC2006B6B48 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B170DD1BA00AC2006B6B48 /* ScannerViewController.m */; };
-		84B170E11BA03367006B6B48 /* ScannerAutoFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B170E01BA03367006B6B48 /* ScannerAutoFocusViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8486E2BB1BA04073009AE1DB /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8486E2BC1BA04073009AE1DB /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8486E2BD1BA04073009AE1DB /* ScannerAutoFocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerAutoFocusViewController.h; sourceTree = "<group>"; };
+		8486E2BE1BA04073009AE1DB /* ScannerAutoFocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerAutoFocusViewController.m; sourceTree = "<group>"; };
+		8486E2BF1BA04073009AE1DB /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
+		8486E2C01BA04073009AE1DB /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
+		8486E2C51BA0409B009AE1DB /* ScannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerView.h; sourceTree = "<group>"; };
+		8486E2C61BA0409B009AE1DB /* ScannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerView.m; sourceTree = "<group>"; };
 		84ABF89C1B9EE1A0003448DF /* QRCodeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84ABF8A01B9EE1A0003448DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84ABF8A11B9EE1A0003448DF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,8 +55,6 @@
 		84ABF8BB1B9EE1A0003448DF /* QRCodeDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRCodeDemoTests.m; sourceTree = "<group>"; };
 		84ABF8C71B9EE24B003448DF /* LocalFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileManager.h; sourceTree = "<group>"; };
 		84ABF8C81B9EE24B003448DF /* LocalFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileManager.m; sourceTree = "<group>"; };
-		84ABF8CA1B9EE24B003448DF /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		84ABF8CB1B9EE24B003448DF /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		84ABF8CD1B9EE24B003448DF /* NSString+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Expand.h"; sourceTree = "<group>"; };
 		84ABF8CE1B9EE24B003448DF /* NSString+Expand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Expand.m"; sourceTree = "<group>"; };
 		84ABF8D11B9EE24B003448DF /* OwnLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnLabel.h; sourceTree = "<group>"; };
@@ -56,10 +63,6 @@
 		84ABF8D61B9EE24B003448DF /* UILabel+Expand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Expand.m"; sourceTree = "<group>"; };
 		84B170D81BA00765006B6B48 /* scanner_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanner_bg@2x.png"; sourceTree = "<group>"; };
 		84B170D91BA00765006B6B48 /* scanner_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanner_line@2x.png"; sourceTree = "<group>"; };
-		84B170DC1BA00AC2006B6B48 /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
-		84B170DD1BA00AC2006B6B48 /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
-		84B170DF1BA03367006B6B48 /* ScannerAutoFocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerAutoFocusViewController.h; sourceTree = "<group>"; };
-		84B170E01BA03367006B6B48 /* ScannerAutoFocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerAutoFocusViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8486E2B91BA04073009AE1DB /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				8486E2BA1BA04073009AE1DB /* Controller */,
+				8486E2C11BA04073009AE1DB /* View */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		8486E2BA1BA04073009AE1DB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8486E2BB1BA04073009AE1DB /* MainViewController.h */,
+				8486E2BC1BA04073009AE1DB /* MainViewController.m */,
+				8486E2BD1BA04073009AE1DB /* ScannerAutoFocusViewController.h */,
+				8486E2BE1BA04073009AE1DB /* ScannerAutoFocusViewController.m */,
+				8486E2BF1BA04073009AE1DB /* ScannerViewController.h */,
+				8486E2C01BA04073009AE1DB /* ScannerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8486E2C11BA04073009AE1DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8486E2C51BA0409B009AE1DB /* ScannerView.h */,
+				8486E2C61BA0409B009AE1DB /* ScannerView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		84ABF8931B9EE1A0003448DF = {
 			isa = PBXGroup;
 			children = (
@@ -141,8 +175,8 @@
 		84ABF8C51B9EE24B003448DF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8486E2B91BA04073009AE1DB /* Module */,
 				84ABF8C61B9EE24B003448DF /* Manager */,
-				84ABF8C91B9EE24B003448DF /* Module */,
 				84ABF8CC1B9EE24B003448DF /* Tools */,
 			);
 			path = Classes;
@@ -155,19 +189,6 @@
 				84ABF8C81B9EE24B003448DF /* LocalFileManager.m */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		84ABF8C91B9EE24B003448DF /* Module */ = {
-			isa = PBXGroup;
-			children = (
-				84ABF8CA1B9EE24B003448DF /* MainViewController.h */,
-				84ABF8CB1B9EE24B003448DF /* MainViewController.m */,
-				84B170DC1BA00AC2006B6B48 /* ScannerViewController.h */,
-				84B170DD1BA00AC2006B6B48 /* ScannerViewController.m */,
-				84B170DF1BA03367006B6B48 /* ScannerAutoFocusViewController.h */,
-				84B170E01BA03367006B6B48 /* ScannerAutoFocusViewController.m */,
-			);
-			path = Module;
 			sourceTree = "<group>";
 		};
 		84ABF8CC1B9EE24B003448DF /* Tools */ = {
@@ -303,13 +324,14 @@
 			files = (
 				84ABF8DB1B9EE24B003448DF /* OwnLabel.m in Sources */,
 				84ABF8A51B9EE1A0003448DF /* AppDelegate.m in Sources */,
+				8486E2C31BA04073009AE1DB /* ScannerAutoFocusViewController.m in Sources */,
 				84ABF8A21B9EE1A0003448DF /* main.m in Sources */,
-				84ABF8D81B9EE24B003448DF /* MainViewController.m in Sources */,
 				84ABF8D71B9EE24B003448DF /* LocalFileManager.m in Sources */,
+				8486E2C21BA04073009AE1DB /* MainViewController.m in Sources */,
 				84ABF8D91B9EE24B003448DF /* NSString+Expand.m in Sources */,
+				8486E2C71BA0409B009AE1DB /* ScannerView.m in Sources */,
+				8486E2C41BA04073009AE1DB /* ScannerViewController.m in Sources */,
 				84ABF8DD1B9EE24B003448DF /* UILabel+Expand.m in Sources */,
-				84B170E11BA03367006B6B48 /* ScannerAutoFocusViewController.m in Sources */,
-				84B170DE1BA00AC2006B6B48 /* ScannerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

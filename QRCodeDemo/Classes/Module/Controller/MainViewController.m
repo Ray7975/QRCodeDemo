@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import <AVFoundation/AVFoundation.h>
 #import "ScannerViewController.h"
 #import "ScannerAutoFocusViewController.h"
 
@@ -46,18 +47,41 @@
     [self.view addSubview:self.button_scanner_autofocus];
 }
 
+//是否授权
+- (BOOL)isCaptureDeviceAuthorized {
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus != AVAuthorizationStatusAuthorized) {
+        return NO;
+    }
+    return YES;
+}
+
+//没有授权
+- (void)captureDeviceAuthorizedError {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"友情提示" message:@"您没有权限访问摄像头" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alertView show];
+}
+
 #pragma mark - UIResponse Event
 
 //扫描按钮点击事件
 - (void)scannerButtonClick:(id)sender {
-    ScannerViewController *viewController = [[ScannerViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    if ([self isCaptureDeviceAuthorized]) {
+        ScannerViewController *viewController = [[ScannerViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else {
+        [self captureDeviceAuthorizedError];
+    }
 }
 
 //自动对焦扫描按钮点击事件
 - (void)scannerAutoFocusButtonClick:(id)sender {
-    ScannerAutoFocusViewController *viewController = [[ScannerAutoFocusViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    if ([self isCaptureDeviceAuthorized]) {
+        ScannerAutoFocusViewController *viewController = [[ScannerAutoFocusViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else {
+        [self captureDeviceAuthorizedError];
+    }
 }
 
 #pragma mark - Getter And Setter
